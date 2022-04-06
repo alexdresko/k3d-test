@@ -141,3 +141,4 @@ __bash_prompt
 export PROMPT_DIRTRIM=4
 
 alias k=kubectl
+source <(k3d completion bash)

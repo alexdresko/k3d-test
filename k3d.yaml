@@ -3,7 +3,6 @@ kind: Simple
 name: hello-world
 servers: 3
 agents: 2
-image: rancher/k3s:v1.20.4-k3s1
 ports:
   # map localhost to loadbalancer
   - port: 8080:80
