@@ -1,0 +1,34 @@
+apiVersion: k3d.io/v1alpha2
+kind: Simple
+name: hello-world
+servers: 3
+agents: 2
+image: rancher/k3s:v1.20.4-k3s1
+ports:
+  # map localhost to loadbalancer
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+  # map localhost to loadbalancer
+  # - port: 8091:80
+  #   nodeFilters:
+  #     - loadbalancer
+labels:
+  - label: 3dprinter=true # same as `--label 'foo=bar@agent[1]'`
+    nodeFilters:
+      - agent[1]
+registries: # define how registries should be created or used
+  create: true # creates a default registry to be used with the cluster; same as `--registry-create`
+options:
+  k3d: # k3d runtime settings
+    wait: true # wait for cluster to be usable before returining; same as `--wait` (default: true)
+    timeout: "60s" # wait timeout before aborting; same as `--timeout 60s`
+    disableLoadbalancer: false # same as `--no-lb`
+    disableImageVolume: false # same as `--no-image-volume`
+    disableRollback: false # same as `--no-Rollback`
+    disableHostIPInjection: false # same as `--no-hostip`
+  kubeconfig:
+    updateDefaultKubeconfig: true # add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: true)
+    switchCurrentContext: true # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: true)
+  # runtime: # runtime (docker) specific options
+  #   gpuRequest: all # same as `--gpus all`

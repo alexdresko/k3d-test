@@ -1,0 +1,20 @@
+{
+  "name": "k3d-test",
+  "version": "1.0.0",
+  "description": "k3d cluster create hello-world --servers 3 --agents 2 -p \"8081:80@loadbalancer\"",
+  "main": "index.js",
+  "scripts": {
+    "create": "k3d cluster create --config k3d.yaml",
+    "delete": "k3d cluster delete hello-world"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexdresko/k3d-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexdresko/k3d-test/issues"
+  },
+  "homepage": "https://github.com/alexdresko/k3d-test#readme"
+}
